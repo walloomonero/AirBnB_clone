@@ -68,7 +68,8 @@ class TestBaseModel_instantiation(unittest.TestCase):
     def test_instantiation_with_kwargs(self):
         dt = datetime.today()
         dt_iso = dt.isoformat()
-        my_base_model = BaseModel(id="345", created_at=dt_iso, updated_at=dt_iso)
+        my_base_model = BaseModel(id="345", created_at=dt_iso,
+                                  updated_at=dt_iso)
         self.assertEqual(my_base_model.id, "345")
         self.assertEqual(my_base_model.created_at, dt)
         self.assertEqual(my_base_model.updated_at, dt)
@@ -80,7 +81,8 @@ class TestBaseModel_instantiation(unittest.TestCase):
     def test_instantiation_with_args_and_kwargs(self):
         dt = datetime.today()
         dt_iso = dt.isoformat()
-        my_base_model = BaseModel("12", id="345", created_at=dt_iso, updated_at=dt_iso)
+        my_base_model = BaseModel("12", id="345", created_at=dt_iso,
+                                  updated_at=dt_iso)
         self.assertEqual(my_base_model.id, "345")
         self.assertEqual(my_base_model.created_at, dt)
         self.assertEqual(my_base_model.updated_at, dt)
@@ -126,7 +128,7 @@ class TestBaseModel_save(unittest.TestCase):
         self.assertLess(second_updated_at, my_base_model.updated_at)
 
     def test_save_with_arg(self):
-        my_base_model  = BaseModel()
+        my_base_model = BaseModel()
         with self.assertRaises(TypeError):
             my_base_model.save(None)
 
